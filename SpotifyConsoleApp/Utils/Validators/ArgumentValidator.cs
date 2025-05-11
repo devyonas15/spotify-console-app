@@ -6,21 +6,19 @@ public static class ArgumentValidator
 {
     public static bool IsValidMethod(string arg)
     {
-        if (arg != ProgramType.Auth)
-        {
-            return false;
-        }
-
-        return true;
+        return arg is ProgramType.Auth or ProgramType.ArtistDetails;
     }
 
     public static bool IsValidInputBasedOnMethod(string arg1, string arg2)
     {
-        if (arg1 == ProgramType.Auth)
+        switch (arg1)
         {
-            return InputValidator.IsValidJson(arg2);
+            case ProgramType.Auth:
+                return InputValidator.IsValidJson(arg2);
+            case ProgramType.ArtistDetails:
+                return !string.IsNullOrEmpty(arg2);
+            default:
+                return false;
         }
-
-        return false;
     }
 }
