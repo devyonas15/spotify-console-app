@@ -6,5 +6,6 @@ public enum ExitCode
     ArgumentException = 1,
     JsonException = 2,
     HttpRequestException = 3,
+    NotFoundException = 10,
     UnknownSystemException = 50
 }
